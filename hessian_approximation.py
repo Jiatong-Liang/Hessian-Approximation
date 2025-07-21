@@ -158,7 +158,6 @@ def hessian_approximation(demo, ts, params, type, values, seed = 0):
         print("Invalid type. Expected 'IICR' or 'SFS' (case sensitive)")
 
     if type == "IICR" or type == "BOTH":
-        print("hi")
         key, subkey = jr.split(key)
         tmrca_span, sample_config = sample_tmrca_spanss(ts, subkey)
         hessian_iicr = finite_diff_hessian_iicr(iicr_likelihood, parameters, x, values, tmrca_span, sample_config, f, momi_object)
@@ -167,7 +166,6 @@ def hessian_approximation(demo, ts, params, type, values, seed = 0):
         results.append(inv_hessian_iicr)
 
     if type == "SFS" or type == "BOTH":
-        print("hi")
         momi_sfs_object, jsfs = initialize_momi_sfs(ts, demo)
         hessian_iicr = finite_diff_hessian_sfs(sfs_likelihood, parameters, x, values, momi_sfs_object, jsfs)
         inv_hessian_iicr = jnp.linalg.inv(-hessian_iicr)
